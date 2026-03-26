@@ -97,7 +97,7 @@
       text-align: left;
       padding: 10px;
       border-bottom: 1px solid var(--border);
-      min-width: 160px;
+      min-width: 170px;
       vertical-align: top;
       color: var(--muted);
     }
@@ -130,15 +130,20 @@
 <body>
   <main class="container">
     <section class="card">
-      <div class="meta">Effective Date: February 26, 2026</div>
-      <h1>Save & Resume Privacy Policy</h1>
+      <div class="meta">Effective Date: March 26, 2026</div>
+      <h1>Save &amp; Resume Privacy Policy</h1>
       <p>
-        This Privacy Policy explains how the Save & Resume Chrome extension ("Save & Resume", "we", "our", "us")
-        collects, uses, stores, and shares information when you use the extension.
+        This Privacy Policy explains how the Save &amp; Resume Chrome extension ("Save &amp; Resume", "we", "our",
+        "us") collects, uses, stores, and shares information when you use the extension.
       </p>
 
+      <div class="notice">
+        This version has been updated to reflect current analytics, Study Mode, notes, local sync, and update notice
+        behavior in the extension.
+      </div>
+
       <h2>1. Information We Collect</h2>
-      <p>We collect the following data to provide the extension's core functionality:</p>
+      <p>We collect the following information to provide the extension's features:</p>
       <table>
         <thead>
           <tr>
@@ -151,96 +156,134 @@
         <tbody>
           <tr>
             <td>Google account profile data</td>
-            <td>User ID (<code>uid</code>), display name, email, profile photo URL</td>
-            <td>Sign-in, account display, and linking your data to your account</td>
-            <td>Local extension storage and Firebase Authentication / Google identity services</td>
+            <td>User ID (<code>uid</code>), display name, email address, profile photo URL</td>
+            <td>Sign-in, account display, and linking your saved data to your account</td>
+            <td>Local extension storage, Google identity services, and Firebase Authentication</td>
           </tr>
           <tr>
             <td>Authentication session data</td>
-            <td>ID token, refresh token, token expiry</td>
-            <td>Keep you signed in and refresh your session securely</td>
-            <td>Local extension storage; token refresh handled via Google Secure Token API</td>
+            <td>ID token, refresh token, token expiry time</td>
+            <td>Keep you signed in, refresh your session, and securely read or write your cloud data</td>
+            <td>Local extension storage; token refresh handled through Google Secure Token and Firebase services</td>
           </tr>
           <tr>
-            <td>Saved timestamp data</td>
-            <td>YouTube video ID, title, timestamp position, thumbnail URL, category name, saved-at time</td>
-            <td>Save and organize timestamps, sync across your devices</td>
+            <td>Saved video data</td>
+            <td>YouTube video ID, title, thumbnail URL, saved timestamp, timestamp list, notes, category name,
+              Study Mode setting, saved-at time</td>
+            <td>Save, organize, reopen, and sync your saved videos and timestamps across devices</td>
             <td>Chrome local storage and your Firebase Firestore document</td>
+          </tr>
+          <tr>
+            <td>Local extension preferences and notices</td>
+            <td>Study Mode default preference, dismissed banner flags, version/update notice state</td>
+            <td>Remember your extension settings and whether informational notices have already been shown</td>
+            <td>Chrome local storage</td>
+          </tr>
+          <tr>
+            <td>Usage analytics</td>
+            <td>Events such as popup opened, sign-in started/completed/failed, sign-out completed, timestamp saved or
+              updated, category assigned/created/deleted, Study Mode toggled, note edited, card expanded/collapsed,
+              info popover opened, video opened; event properties may include extension version and simple usage flags
+              such as whether Study Mode was on, whether a note existed, whether a category was default or custom,
+              number of timestamps on a card, or whether you were signed in</td>
+            <td>Understand product usage, improve features, measure reliability, and guide product decisions</td>
+            <td>PostHog and local browser storage used to queue analytics temporarily if needed</td>
           </tr>
         </tbody>
       </table>
 
       <h2>2. How Information Is Collected</h2>
       <ul>
-        <li>When you sign in using Google through the extension popup.</li>
-        <li>When you save or update timestamps on YouTube pages.</li>
+        <li>When you sign in with Google through the extension.</li>
+        <li>When you save, update, organize, or open timestamps on YouTube pages.</li>
+        <li>When you turn Study Mode on or off, add notes, create or delete categories, or interact with the popup UI.</li>
         <li>When the extension syncs local data with Firebase Firestore.</li>
+        <li>When the extension sends analytics events through PostHog.</li>
       </ul>
 
       <h2>3. How We Use Information</h2>
       <ul>
         <li>Authenticate users and maintain signed-in sessions.</li>
-        <li>Store, retrieve, organize, and sync saved timestamps.</li>
-        <li>Migrate legacy local data to cloud storage when you sign in.</li>
-        <li>Operate and secure the extension.</li>
+        <li>Store, retrieve, organize, migrate, and sync saved timestamps, notes, categories, and Study Mode data.</li>
+        <li>Reopen videos at saved timestamps and support Study Mode workflows.</li>
+        <li>Show relevant in-extension notices about updates that may affect storage behavior.</li>
+        <li>Analyze feature usage and improve the extension's reliability and product experience.</li>
+        <li>Operate, maintain, and secure the extension.</li>
       </ul>
 
-      <h2>4. Sharing of Information</h2>
+      <h2>4. Analytics</h2>
       <p>
-        We do not sell your personal information.
-        We share data only with service providers needed to run the extension:
+        Save &amp; Resume uses PostHog for product analytics. Analytics help us understand how features are used and
+        where the extension needs improvement.
+      </p>
+      <ul>
+        <li>Analytics may include your user ID and, after sign-in, your email address and display name so usage can be tied to your account.</li>
+        <li>Analytics events do not need to include the full contents of your saved videos or notes to measure product usage.</li>
+        <li>If analytics cannot be sent immediately, some events may be queued temporarily in local extension storage and sent later.</li>
+      </ul>
+
+      <h2>5. Sharing of Information</h2>
+      <p>
+        We do not sell your personal information. We share data only with service providers needed to operate the
+        extension:
       </p>
       <ul>
         <li>Google Identity / OAuth services for sign-in.</li>
-        <li>Firebase Authentication and Cloud Firestore for authentication and sync storage.</li>
+        <li>Firebase Authentication for authentication.</li>
+        <li>Firebase Cloud Firestore for cloud sync and storage.</li>
+        <li>PostHog for product analytics.</li>
       </ul>
 
-      <h2>5. Data Retention</h2>
+      <h2>6. Data Retention</h2>
       <ul>
         <li>Local extension data remains until you clear extension storage or uninstall the extension.</li>
-        <li>Cloud timestamp data remains in Firestore until it is deleted through extension actions or support request.
-        </li>
-        <li>Auth session data is cleared locally when you sign out.</li>
+        <li>Cloud data remains in Firestore until it is deleted through extension actions or by request.</li>
+        <li>Authentication session data is cleared locally when you sign out, although some locally cached saved data may remain on your device.</li>
+        <li>Queued analytics and local analytics identifiers may remain in local browser storage until sent, cleared, or removed with the extension's local data.</li>
       </ul>
 
-      <h2>6. Data Security</h2>
+      <h2>7. Data Security</h2>
       <p>
         We use authenticated access controls and Firebase security rules intended to restrict each user to their own
-        data.
-        No method of transmission or storage is 100% secure, but we use commercially reasonable measures to protect
-        data.
+        data. No method of transmission or storage is 100% secure, but we use commercially reasonable measures to help
+        protect data.
       </p>
 
-      <h2>7. Your Choices and Controls</h2>
+      <h2>8. Your Choices and Controls</h2>
       <ul>
         <li>You may sign out at any time from the extension popup.</li>
-        <li>You may remove saved timestamps and categories inside the extension UI.</li>
-        <li>You may uninstall the extension to remove local extension data.</li>
+        <li>You may remove saved timestamps, notes, and categories inside the extension UI.</li>
+        <li>You may uninstall the extension to remove local extension data from your browser.</li>
+        <li>You may contact us to request deletion of cloud-stored data associated with your account.</li>
       </ul>
 
-      <h2>8. Children's Privacy</h2>
+      <h2>9. Children's Privacy</h2>
       <p>
-        Save & Resume is not directed to children under 13, and we do not knowingly collect personal information from
-        children under 13.
+        Save &amp; Resume is not directed to children under 13, and we do not knowingly collect personal information
+        from children under 13.
       </p>
 
-      <h2>9. International Users</h2>
+      <h2>10. International Users</h2>
       <p>
-        Your information may be processed in countries where Google and Firebase infrastructure operates.
+        Your information may be processed in countries where Google, Firebase, and PostHog infrastructure operates.
       </p>
 
-      <h2>10. Changes to This Policy</h2>
+      <h2>11. Changes to This Policy</h2>
       <p>
-        We may update this Privacy Policy from time to time. We will post the updated version at this URL and revise the
-        effective date.
+        We may update this Privacy Policy from time to time. We will post the updated version at this URL and revise
+        the effective date.
       </p>
 
-      <h2>11. Contact</h2>
+      <h2>12. Contact</h2>
       <p>
-        For privacy questions or data deletion requests, contact: <strong>jithinsabu.mec@gmail.com</strong>
+        For privacy questions or data deletion requests, contact:
+        <strong>jithinsabu.mec@gmail.com</strong>
       </p>
 
-
+      <p class="footer">
+        Summary: the extension stores your saved video data and account session to make the product work, and it now
+        also sends product analytics through PostHog about how the extension is used.
+      </p>
     </section>
   </main>
 </body>
